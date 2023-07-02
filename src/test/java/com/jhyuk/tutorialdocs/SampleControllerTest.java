@@ -55,7 +55,7 @@ class SampleControllerTest {
                                 """)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful())
-                .andDo(document("member add",
+                .andDo(document("members/post",
                         requestFields(fieldWithPath("name").description("이름"),
                                 fieldWithPath("phone").description("전화번호"))));
 
