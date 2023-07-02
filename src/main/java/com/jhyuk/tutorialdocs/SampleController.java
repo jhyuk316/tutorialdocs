@@ -12,12 +12,12 @@ public class SampleController {
     private final Map<Long, Member> memberMap = new HashMap<>();
     private Long keyId = 1L;
 
-    @GetMapping("member")
+    @GetMapping("members")
     public ResponseEntity<Map<Long, Member>> getMember() {
         return ResponseEntity.ok().body(memberMap);
     }
 
-    @GetMapping("member/{memberId}")
+    @GetMapping("members/{memberId}")
     public ResponseEntity<Member> getMember(@PathVariable Long memberId) {
         Member member = memberMap.get(memberId);
         if(member == null){
@@ -26,20 +26,20 @@ public class SampleController {
         return ResponseEntity.ok().body(member);
     }
 
-    @PostMapping("member")
+    @PostMapping("members")
     public ResponseEntity<Member> addMember(@RequestBody Member member) {
         memberMap.put(keyId++, member);
         return ResponseEntity.ok().body(member);
     }
 
-    @PutMapping("member/{memberId}")
+    @PutMapping("members/{memberId}")
     public ResponseEntity<Member> editMember(@PathVariable Long memberId,
                                              @RequestBody Member member) {
         memberMap.put(memberId, member);
         return ResponseEntity.ok().body(member);
     }
 
-    @DeleteMapping("member/{memberId}")
+    @DeleteMapping("members/{memberId}")
     public ResponseEntity<Member> deleteMember(@PathVariable Long memberId) {
         Member member = memberMap.get(memberId);
         memberMap.remove(memberId);
